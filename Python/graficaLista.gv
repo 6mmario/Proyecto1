@@ -1,0 +1,7 @@
+digraph G {
+rankdir=LR
+	node [color=blue shape=box]
+		Guitz -> Jose
+		Jose -> Diego
+		Diego -> Perez
+}

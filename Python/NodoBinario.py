@@ -1,4 +1,5 @@
 class nBinary:
+
     def __init__(self, id = None, left=None , right= None):
         self.id = id
         self.left = left
