@@ -7,6 +7,4 @@ rankdir=LR
 [dir=both]
 		Diego -> Perez
 [dir=both]
-		Perez -> Guitz
-[dir=both]
 }

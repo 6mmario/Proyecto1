@@ -61,7 +61,7 @@ class listaCircular:
                 g.edge(str(aux.nombre), str(aux.next.nombre))
                 g.body.append('[dir=both]')
                 aux = aux.next
-                if (aux == self.first):
+                if (aux.next == self.first):
                     break
                 print str(aux.nombre + " " + aux.pasword)
         g.format = 'png'
