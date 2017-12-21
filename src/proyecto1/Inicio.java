@@ -1,5 +1,7 @@
 package proyecto1;
-import org.netbeans.lib.awtextra.AbsoluteLayout;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 /**
  *
  * @author Diego
@@ -11,6 +13,13 @@ public class Inicio extends javax.swing.JFrame {
      */
     public Inicio() {
         initComponents();
+        // this.getContentPane().add(this.jPanel2);//esto en el metodo que ocupes
+        // this.jPanel2.setVisible(true);
+       // this.jPanel1.setVisible(false);
+        ImageIcon img = new ImageIcon("src/proyecto1/logo.png");
+        Icon icono = new ImageIcon(img.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(),Image.SCALE_DEFAULT));
+        jLabel4.setIcon(icono);
+        this.repaint();
     }
 
     /**
@@ -25,27 +34,57 @@ public class Inicio extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         btnlogin = new javax.swing.JButton();
-        txtpass = new javax.swing.JTextField();
         txtuser = new javax.swing.JTextField();
+        txtpass = new javax.swing.JPasswordField();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        txtusuario = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtcontrasena = new javax.swing.JTextField();
+        btnregistrar = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnlogin.setText("LOGIN");
-        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, -1, -1));
-        jPanel1.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 130, 130, -1));
-        jPanel1.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, 130, -1));
+        btnlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnloginActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 320, -1, -1));
+        jPanel1.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 170, -1));
+        jPanel1.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 170, -1));
 
+        jLabel5.setBackground(new java.awt.Color(255, 0, 0));
+        jLabel5.setFont(new java.awt.Font("Gadugi", 0, 15)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel5.setText("Registrarse");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/logo.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 160, 140));
+
+        jLabel3.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel3.setText("Usuario:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 50, 20));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 70, 20));
 
+        jLabel2.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel2.setText("Contrasena:");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 130, 70, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 120, 20));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/fondo.jpg"))); // NOI18N
         jLabel1.setText("jLabel1");
@@ -53,16 +92,27 @@ public class Inicio extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("LOGIN", jPanel1);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 724, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel6.setText("Usuario:");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
+        jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 156, -1));
+
+        jLabel7.setText("Contraseña:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
+        jPanel2.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 156, -1));
+
+        btnregistrar.setText("REGISTRAR");
+        btnregistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnregistrarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/fondo.jpg"))); // NOI18N
+        jLabel8.setText("jLabel8");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 400));
 
         jTabbedPane1.addTab("REGISTRO", jPanel2);
 
@@ -70,7 +120,7 @@ public class Inicio extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,6 +129,33 @@ public class Inicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+     this.jPanel1.setVisible(false);
+    this.getContentPane().add(this.jPanel1);
+    this.jPanel2.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
+
+    private void btnregistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnregistrarActionPerformed
+      String u;
+      String c;
+      
+      u = txtusuario.getText();
+      c = txtcontrasena.getText();
+      
+  
+      System.out.println("esto tengo" + u + c );
+      
+      
+    }//GEN-LAST:event_btnregistrarActionPerformed
+
+    private void btnloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnloginActionPerformed
+       String user = txtuser.getText();
+       String pass = txtpass.getText();
+       
+       
+
+    }//GEN-LAST:event_btnloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,13 +194,21 @@ public class Inicio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnlogin;
+    private javax.swing.JButton btnregistrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField txtpass;
+    private javax.swing.JTextField txtcontrasena;
+    private javax.swing.JPasswordField txtpass;
     private javax.swing.JTextField txtuser;
+    private javax.swing.JTextField txtusuario;
     // End of variables declaration//GEN-END:variables
 }
