@@ -94,13 +94,15 @@ public class Inicio extends javax.swing.JFrame {
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel6.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel6.setText("Usuario:");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 70, -1, -1));
-        jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 340, 156, -1));
+        jPanel2.add(txtusuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 70, 156, -1));
 
+        jLabel7.setFont(new java.awt.Font("Gadugi", 0, 18)); // NOI18N
         jLabel7.setText("Contraseña:");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
-        jPanel2.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 100, 156, -1));
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, -1));
+        jPanel2.add(txtcontrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 110, 156, -1));
 
         btnregistrar.setText("REGISTRAR");
         btnregistrar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,11 +110,11 @@ public class Inicio extends javax.swing.JFrame {
                 btnregistrarActionPerformed(evt);
             }
         });
-        jPanel2.add(btnregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 150, -1, -1));
+        jPanel2.add(btnregistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/proyecto1/fondo.jpg"))); // NOI18N
         jLabel8.setText("jLabel8");
-        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 400));
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 450));
 
         jTabbedPane1.addTab("REGISTRO", jPanel2);
 
@@ -124,7 +126,7 @@ public class Inicio extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
