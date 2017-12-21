@@ -1,6 +1,7 @@
 from MatrizDispersa import  MatrizDispersa
 from ListaCircular import listaCircular
-from NodoCircular import  nodeCircular
+from ColaCircular import colaCircular
+from NodoCola import nodeCola
 ########################################
 #       Matriz Disperza                #
 ########################################
@@ -41,33 +42,55 @@ from NodoCircular import  nodeCircular
 #Matriz.RecorrerPorFila()
 
 ########################################
-#       Lista Circular                 #
+#       Lista Doblemente Enlazada      #
 ########################################
 
-lista = listaCircular()
-nodo = nodeCircular('Mario','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Obed','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Morales','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Guitz','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Jose','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Diego','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Perez','1234')
-lista.insert(nodo)
-nodo = nodeCircular('Toraya','1234')
-lista.insert(nodo)
-lista.graficar()
-nodos = lista.search('Morales','1234')
-lista.delete(nodos)
-nodos = lista.search('Mario','1234')
-lista.delete(nodos)
-nodos = lista.search('Toraya','1234')
-lista.delete(nodos)
-nodos = lista.search('Obed','1234')
-lista.delete(nodos)
-lista.graficar()
+#lista = listaCircular()
+#nodo = nodeCircular('Mario','1234')
+#lista.insert(nodo)
+#nodo = nodeCircular('Obed','1234')
+#lista.insert(nodo)
+#nodo = nodeCircular('Morales','1234')
+#lista.insert(nodo)
+# nodo = nodeCircular('Guitz','1234')
+# lista.insert(nodo)
+# nodo = nodeCircular('Jose','1234')
+# lista.insert(nodo)
+# nodo = nodeCircular('Diego','1234')
+# lista.insert(nodo)
+# nodo = nodeCircular('Perez','1234')
+# lista.insert(nodo)
+# nodo = nodeCircular('Toraya','1234')
+# lista.insert(nodo)
+# lista.graficar()
+# nodos = lista.search('Morales','1234')
+# lista.delete(nodos)
+# nodos = lista.search('Mario','1234')
+# lista.delete(nodos)
+# nodos = lista.search('Toraya','1234')
+# lista.delete(nodos)
+# nodos = lista.search('Obed','1234')
+# lista.delete(nodos)
+#lista.graficar()
+
+########################################
+#       Cola Circular                  #
+########################################
+
+cola = colaCircular()
+
+nodo = nodeCola('hola')
+cola.insert(nodo)
+nodo = nodeCola('ke')
+cola.insert(nodo)
+nodo = nodeCola('ace')
+cola.insert(nodo)
+nodo = nodeCola('YO')
+cola.insert(nodo)
+nodo = nodeCola('Tengo')
+cola.insert(nodo)
+nodo = nodeCola('Mucho')
+cola.insert(nodo)
+nodo = nodeCola('Sue;o')
+cola.insert(nodo)
+cola.graficar()
