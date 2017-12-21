@@ -1,7 +1,10 @@
+from idlelib.idle_test.test_io import BA
+
 from MatrizDispersa import  MatrizDispersa
 from ListaCircular import listaCircular
 from ColaCircular import colaCircular
 from NodoCola import nodeCola
+#from BTree import bTree
 ########################################
 #       Matriz Disperza                #
 ########################################
@@ -77,20 +80,24 @@ from NodoCola import nodeCola
 #       Cola Circular                  #
 ########################################
 
-cola = colaCircular()
+# cola = colaCircular()
+#
+# nodo = nodeCola('hola')
+# cola.insert(nodo)
+# nodo = nodeCola('ke')
+# cola.insert(nodo)
+# nodo = nodeCola('ace')
+# cola.insert(nodo)
+# nodo = nodeCola('YO')
+# cola.insert(nodo)
+# nodo = nodeCola('Tengo')
+# cola.insert(nodo)
+# nodo = nodeCola('Mucho')
+# cola.insert(nodo)
+# nodo = nodeCola('Sue;o')
+# cola.insert(nodo)
+# cola.graficar()
 
-nodo = nodeCola('hola')
-cola.insert(nodo)
-nodo = nodeCola('ke')
-cola.insert(nodo)
-nodo = nodeCola('ace')
-cola.insert(nodo)
-nodo = nodeCola('YO')
-cola.insert(nodo)
-nodo = nodeCola('Tengo')
-cola.insert(nodo)
-nodo = nodeCola('Mucho')
-cola.insert(nodo)
-nodo = nodeCola('Sue;o')
-cola.insert(nodo)
-cola.graficar()
+########################################
+#       B-tree                         #
+########################################

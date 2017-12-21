@@ -1,0 +1,16 @@
+<archivo>
+	<usuarios>
+		<usuario>
+			<nombre>marco</nombre>
+			<pass>123</pass>
+		</usuario>
+		<usuario>
+			<nombre>jose</nombre>
+			<pass>1234</pass>
+		</usuario>
+		<usuario>
+			<nombre>elmer</nombre>
+			<pass>1232</pass>
+		</usuario>
+	</usuarios>
+</archivo>
