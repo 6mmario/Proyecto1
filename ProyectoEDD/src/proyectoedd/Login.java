@@ -23,6 +23,8 @@ import org.w3c.dom.NodeList;
 import static sun.awt.image.ImagingLib.filter;
 
 public class Login extends javax.swing.JFrame {
+    
+    Conected.Conection cx = new Conected.Conection();
 
     public Login() {
         initComponents();
@@ -191,9 +193,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtregistrarseActionPerformed
-      //   String user = txtusuario.getText();
-      //  String pass = txtcontrasena.getText();
+         String user = txtusuario.getText();
+        String pass = txtcontrasena.getText();
         
+        cx.insert(user, pass);
       
     }//GEN-LAST:event_txtregistrarseActionPerformed
 
