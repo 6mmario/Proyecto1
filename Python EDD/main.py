@@ -7,24 +7,14 @@ lista = listaCircular()
 
 app = Flask("Proyecto1")
 
-@app.route('/agregarLista', methods=['POST'])
-def agregarLista():
-        parametro = str(request.form['dato'])
-        parametro2 = str(request.form['dato1'])
+@app.route('/insert', methods=['POST'])
+def addListaDoble():
+        parametro = str(request.form['user'])
+        parametro2 = str(request.form['pass'])
         node = nodeCircular(parametro,parametro2)
         lista.insert(node)
         lista.graficar()
         return "Dato Agregado a Lista_Simple " + str(parametro) +' '+ str(parametro2) + "! \n"
-
-
-
-
-
-
-
-
-
-
 
 
 
