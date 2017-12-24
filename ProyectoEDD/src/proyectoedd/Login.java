@@ -1,41 +1,54 @@
-
 package proyectoedd;
 
+import com.sun.org.apache.xerces.internal.parsers.DOMParser;
+import com.sun.org.apache.xpath.internal.XPathAPI;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import javax.swing.text.Document;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+import javax.xml.transform.TransformerException;
+import javax.xml.xpath.XPathConstants;
+import javax.xml.xpath.XPathExpressionException;
+import javax.xml.xpath.XPathFactory;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.w3c.dom.NodeList;
-import static sun.awt.image.ImagingLib.filter;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
 
 public class Login extends javax.swing.JFrame {
-    
+
     Conected.Conection cx = new Conected.Conection();
 
     public Login() {
         initComponents();
         ImageIcon img = new ImageIcon("src/proyectoedd/logo.png");
         ImageIcon img2 = new ImageIcon("src/proyectoedd/regresar.png");
-        Icon icono = new ImageIcon(img.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(),Image.SCALE_DEFAULT));
+        Icon icono = new ImageIcon(img.getImage().getScaledInstance(jLabel4.getWidth(), jLabel4.getHeight(), Image.SCALE_DEFAULT));
         jLabel4.setIcon(icono);
-        Icon icono2 = new ImageIcon(img2.getImage().getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(),Image.SCALE_DEFAULT));
+        Icon icono2 = new ImageIcon(img2.getImage().getScaledInstance(jLabel9.getWidth(), jLabel9.getHeight(), Image.SCALE_DEFAULT));
         jLabel9.setIcon(icono2);
         this.setLocationRelativeTo(null);
-        this.setMinimumSize(new Dimension(500, 500)); 
+        this.setMinimumSize(new Dimension(500, 500));
         this.repaint();
     }
 
@@ -185,61 +198,76 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
         String user = txtuser.getText();
         String pass = txtpass.getText();
-        
-  
+        boolean a = cx.search(user, pass);
+        if (a) {
+            JOptionPane.showMessageDialog(null, "Bienvenido");
+        } else {
+            JOptionPane.showMessageDialog(null, "No Existe el usuario");
+        }
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void txtregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtregistrarseActionPerformed
-         String user = txtusuario.getText();
+        String user = txtusuario.getText();
         String pass = txtcontrasena.getText();
-        
+
         cx.insert(user, pass);
-      
+
     }//GEN-LAST:event_txtregistrarseActionPerformed
 
     private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
-    // this.jPanel1.setVisible(false);
+        // this.jPanel1.setVisible(false);
 //    this.getContentPane().add(this.jPanel1);
- //   this.jPanel2.setVisible(true);
+        //   this.jPanel2.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel8MouseClicked
 
     private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
-    //this.getContentPane().add(this.jPanel2);
-    //this.jPanel1.setVisible(true);
+        //this.getContentPane().add(this.jPanel2);
+        //this.jPanel1.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel9MouseClicked
 
-  
-    
+
     private void btnexaminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnexaminarActionPerformed
-        
-        if(seleccionado.showDialog(null, "abrir archivo ")== JFileChooser.APPROVE_OPTION){
-        FileNameExtensionFilter filter = new FileNameExtensionFilter("xml files", "xml", "EDD");     
-        seleccionado.setFileFilter(filter);
-        seleccionado.setDialogTitle("Abre un archivo .xml");
-        Archivo = seleccionado.getSelectedFile();
-        
-                 if(Archivo.canRead()){
 
-                if(Archivo.getName().endsWith("xml")){
-                 String contenido = Cargar(Archivo);
-                 leerarchivo();
-                 jTextArea1.setText(contenido);
+        try {
+            leerarchivo();
+//        if (seleccionado.showDialog(null, "abrir archivo ") == JFileChooser.APPROVE_OPTION) {
+//            FileNameExtensionFilter filter = new FileNameExtensionFilter("xml files", "xml", "EDD");
+//            seleccionado.setFileFilter(filter);
+//            seleccionado.setDialogTitle("Abre un archivo .xml");
+//            Archivo = seleccionado.getSelectedFile();
+//
+//            if (Archivo.canRead()) {
+//
+//                if (Archivo.getName().endsWith("xml")) {
+//                    String contenido = Cargar(Archivo);
+//                    leerarchivo();
+//                    jTextArea1.setText(contenido);
+//
+//                } else {
+//                    JOptionPane.showMessageDialog(null, "fORMATO NO ACEPTADO");
+//                }
+//            }
+//
+//        }
+        } catch (SAXException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TransformerException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (XPathExpressionException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
-                }else{
-                    JOptionPane.showMessageDialog(null,"fORMATO NO ACEPTADO");
-                }
-            }
-        
-        
-    } 
-        
-        
- 
+
     }//GEN-LAST:event_btnexaminarActionPerformed
 
     public static void main(String args[]) {
@@ -301,76 +329,57 @@ public class Login extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     JFileChooser seleccionado = new JFileChooser();
-    File Archivo;
+    String Archivo = "C:\\Users\\mmari\\Documents\\0772 - EDD\\2017 Segundo Semestre Diciembre\\archivoProyecto1.xml";
+    // File Archivo;
+
     FileInputStream entrada;
     FileOutputStream salida;
-    
-  
-  public String Cargar(File Archivo){
-    String contenido = "";
-    try{
-    entrada = new FileInputStream(Archivo);
-    int cod;
-    while((cod = entrada.read()) != -1){
-    char caracter = (char)cod;
-    contenido += caracter;
-    }
-    }catch(Exception e){
-    
-    }
-    return contenido;
-}
-  
 
-    public void leerarchivo(){
-            
-    try{
-    DocumentBuilderFactory docbuildfac = DocumentBuilderFactory.newInstance();
-    DocumentBuilder docbuild = docbuildfac.newDocumentBuilder();
-    org.w3c.dom.Document doc = docbuild.parse(Archivo);    
-    doc.getDocumentElement().normalize();
+    public String Cargar(File Archivo) {
+        String contenido = "";
+        try {
+            entrada = new FileInputStream(Archivo);
+            int cod;
+            while ((cod = entrada.read()) != -1) {
+                char caracter = (char) cod;
+                contenido += caracter;
+            }
+        } catch (Exception e) {
 
-    
-    NodeList listnodo = doc.getElementsByTagName("archivo"); 
-    NodeList listausuarios = doc.getElementsByTagName("usuarios"); 
-    NodeList listausuario = doc.getElementsByTagName("usuario"); 
-    NodeList listaartistas = doc.getElementsByTagName("artistas");
-    NodeList listaartista = doc.getElementsByTagName("artista");
-   
-    for (int a = 0; a < listnodo.getLength(); a++) {               
-     for (int i = 0; i < listausuarios.getLength(); i++) {
-        Node nodon = listausuarios.item(i);  
-        for (int j = 0; j < listausuario.getLength(); j++) {      
-        if (nodon.getNodeType() == Node.ELEMENT_NODE) {
-         
-            Element eElement = (Element) nodon;
- 
-            System.out.println("el nombre es : " + eElement.getElementsByTagName("nombre").item(j).getTextContent() );
-            System.out.println("el pass es: " + eElement.getElementsByTagName("pass").item(j).getTextContent() );                 
-        }                
-        }        
-     for (int j = 0; j < listaartistas.getLength(); j++) {
-          Node nodoa = listaartistas.item(j); 
-          for (int k = 0; k < listaartista.getLength(); k++) {
-          if (nodoa.getNodeType() == Node.ELEMENT_NODE) {
-         
-            Element eElement = (Element) nodoa;
- 
-            System.out.println("el nombre artista es : " + eElement.getElementsByTagName("nombre").item(k).getTextContent() );
-            //System.out.println("el pass es: " + eElement.getElementsByTagName("pass").item(j).getTextContent() );                 
-        } 
-         }
-         
-         
-         }
- 
-        
+        }
+        return contenido;
     }
-    }
-     
-    }catch(Exception e){
-        System.out.println("Archivo no encontrado.");
-    }
-       
+
+    public void leerarchivo() throws FileNotFoundException, SAXException, IOException, TransformerException, XPathExpressionException, ParserConfigurationException {
+        SAXParserFactory saxParserFactory = SAXParserFactory.newInstance();
+        SAXParser saxParser = saxParserFactory.newSAXParser();
+        File file = new File(Archivo);
+        VersionesHandler handler = new VersionesHandler();
+        saxParser.parse(file, handler);
+
+        ArrayList<Usuario> usuarios = handler.getUsuarios();
+        ArrayList<Artista> artistas = handler.getArtistas();
+        ArrayList<Album> albumes;
+
+        for (Usuario u : usuarios) {
+            System.out.println(u);
+            cx.insert(u.getNombreU(), u.getPass());
+
+        }
+        //For Inserto Nombre del Artista
+        for (Artista a : artistas) {
+            System.out.println(a);
+           // a.getNombre();
+            //Inserto Datos del Album del Artista
+            for(Album al : a.albumes){
+                System.out.println(al);
+                cx.insertMatrix(al.getAnio(), al.getGenero(), al.getAnio()+"-"+al.getGenero());
+                for(Cancion ca : al.canciones){
+                    System.out.println(ca);
+                }
+            }
+           
+        }
+
     }
 }

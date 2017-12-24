@@ -22,12 +22,17 @@ class listaCircular:
 
     def search(self, nombre, pasword):
         aux = self.first
-        while True:
-            if (aux.nombre == nombre and aux.pasword == pasword):
-                return aux
-            aux = aux.next
-            if (aux == self.first):
-                return None
+        if (aux != None):
+            while True:
+                if (aux.nombre == nombre and aux.pasword == pasword):
+                    print ('Encontre algo: '+aux.nombre+' '+aux.pasword)
+                    return aux
+                aux = aux.next
+                if (aux == self.first):
+                    print ('El Usuario No existe')
+                    return None
+        print ('El Usuario No Existe')
+        return None
 
     def delete(self, element):
 

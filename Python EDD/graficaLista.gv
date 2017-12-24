@@ -1,10 +1,14 @@
 digraph G {
 rankdir=LR
 	node [color=blue shape=box]
-		Obed -> Bayron
+		marco -> jose
 [dir=both]
-		Bayron -> Diego
+		jose -> elmer
+[dir=both]
+		elmer -> Diego
 [dir=both]
 		Diego -> Heber
+[dir=both]
+		Heber -> Delmy
 [dir=both]
 }

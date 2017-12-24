@@ -14,13 +14,37 @@ public class Conection {
     public static OkHttpClient webClient = new OkHttpClient();
     
         public void insert(String nombre, String Pasword) {
-        RequestBody formBody = new FormEncodingBuilder()
-                .add("user", nombre)
-                .add("pass", Pasword)
-                .build();
-        String r = getString("insert", formBody);
-        System.out.println(r + "--- Metodo Agregar Usuarios");
-    }
+            RequestBody formBody = new FormEncodingBuilder()
+                    .add("user", nombre)
+                    .add("pass", Pasword)
+                    .build();
+            String r = getString("insert", formBody);
+            System.out.println(r + "--- Metodo Agregar Usuarios");
+        }
+        
+        public boolean search(String nombre, String Pasword){
+            RequestBody formBody = new FormEncodingBuilder()
+                    .add("user", nombre)
+                    .add("pass", Pasword)
+                    .build();
+            String r = getString("search", formBody);
+            System.out.println("Retorno esto: "+r);
+            if (r.equals("True")) {
+                return true;
+            }
+             return false;          
+        }
+        
+        public void insertMatrix(String anio, String Genero, String nodo){
+            RequestBody formBody = new FormEncodingBuilder()
+                    .add("anio", anio)
+                    .add("Genero", Genero)
+                    .add("nodo", nodo)
+                    .build();
+            String r = getString("insertarMatrix", formBody);
+            System.out.println(r+"Esto Retorne");
+        }
+        
         
          public static String getString(String metodo, RequestBody formBody) {
 
