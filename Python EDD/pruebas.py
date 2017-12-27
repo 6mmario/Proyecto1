@@ -5,7 +5,54 @@ from ListaCircular import listaCircular
 from NodoCircular import nodeCircular
 from ColaCircular import colaCircular
 from NodoCola import nodeCola
-#from BTree import bTree
+from NodoCancion import nodeCancion
+from arbolBinario import aBinary
+from NodoBinario import nBinary
+########################################
+#       BBTree                         #
+########################################
+
+# abb = aBinary()
+# nodo = nBinary('jose')
+# abb.insert(nodo)
+# nodo = nBinary('arbo')
+# abb.insert(nodo)
+# nodo = nBinary('pedr')
+# abb.insert(nodo)
+# nodo = nBinary('MAR')
+# abb.insert(nodo)
+# nodo = nBinary('a')
+# abb.insert(nodo)
+# nodo = nBinary('mari')
+# abb.insert(nodo)
+# nodo = nBinary('zor')
+# abb.insert(nodo)
+# nodo = nBinary('pedo')
+# abb.insert(nodo)
+# nodo = nBinary('mijo')
+# abb.insert(nodo)
+# aux = abb.getRoot()
+# # abb.inOrder(aux)
+#
+# abb.search('mijo',aux)
+#
+# # abb.graficar()
+# aux = abb.search('pedr',aux)
+# print aux
+# nodo = nodeCancion('Maluma','cjfkdjf')
+# abb.insertListaCircular(aux,nodo)
+# nodo = nodeCancion('Ozuna','cjfkdjf')
+# abb.insertListaCircular(aux,nodo)
+# nodo = nodeCancion('Que','cjfkdjf')
+# abb.insertListaCircular(aux,nodo)
+# nodo = nodeCancion('Xumo','cjfkdjf')
+# abb.insertListaCircular(aux,nodo)
+# nodo = nodeCancion('me','cjfkdjf')
+# abb.insertListaCircular(aux,nodo)
+# nodo = nodeCancion('siento','cjfkdjf')
+# abb.insertListaCircular(aux,nodo)
+# abb.graficar()
+
 
 ########################################
 #       Matriz Disperza                #
@@ -51,7 +98,6 @@ from NodoCola import nodeCola
 ########################################
 
 lista = listaCircular()
-lista.search('obed','1234')
 nodo = nodeCircular('Mario','1234')
 lista.insert(nodo)
 nodo = nodeCircular('Obed','1234')
@@ -68,23 +114,35 @@ nodo = nodeCircular('Perez','1234')
 lista.insert(nodo)
 nodo = nodeCircular('Toraya','1234')
 lista.insert(nodo)
+nodo = nodeCircular('Heber','1234')
+lista.insert(nodo)
+
+aux = lista.search('Heber','1234')
+print aux
+nodo = nodeCola('hola')
+lista.insertColaCanciones(aux,nodo)
+nodo = nodeCola('ke')
+lista.insertColaCanciones(aux,nodo)
+nodo = nodeCola('ace')
+lista.insertColaCanciones(aux,nodo)
+
+aux = lista.search('Obed','1234')
+print aux
+nodo = nodeCola('Vos')
+lista.insertColaCanciones(aux,nodo)
+nodo = nodeCola('Sos')
+lista.insertColaCanciones(aux,nodo)
+nodo = nodeCola('Un')
+lista.insertColaCanciones(aux,nodo)
+nodo = nodeCola('Crack')
+lista.insertColaCanciones(aux,nodo)
 lista.graficar()
-nodos = lista.search('Morales','1234')
-lista.delete(nodos)
-nodos = lista.search('Mario','1234')
-lista.delete(nodos)
-nodos = lista.search('Toraya','1234')
-lista.delete(nodos)
-nodos = lista.search('Obed','1234')
-lista.delete(nodos)
-lista.graficar()
-lista.search('obed','1234')
 
 
 ########################################
 #       Cola Circular                  #
 ########################################
-
+#
 # cola = colaCircular()
 #
 # nodo = nodeCola('hola')
@@ -102,6 +160,7 @@ lista.search('obed','1234')
 # nodo = nodeCola('Sue;o')
 # cola.insert(nodo)
 # cola.graficar()
+
 
 ########################################
 #       B-tree                         #

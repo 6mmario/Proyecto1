@@ -1,0 +1,43 @@
+digraph G {
+rankdir=LR
+	node [color=blue shape=box]
+	node [fontname=Marvel fontsize=14]
+		Mario -> Obed
+[dir=both arrowhead=halfopen color=darkgreen]
+		Obed -> Morales
+[dir=both arrowhead=halfopen color=darkgreen]
+Obed->Vos[arrowhead=inv color=goldenrod]
+ subgraph cluster_Obed{ 
+	style=filled; 
+	color=lightgrey; 
+	node [style=filled,color=white]; 
+Vos->Sos [arrowhead=odot color=green]Sos->Un [arrowhead=odot color=green]Un->Crack [arrowhead=odot color=green]Crack->Vos [arrowhead=odot color=green]
+label = "Cola Circular de Canciones de Obed"; 
+ } 
+
+		Morales -> Guitz
+[dir=both arrowhead=halfopen color=darkgreen]
+		Guitz -> Jose
+[dir=both arrowhead=halfopen color=darkgreen]
+		Jose -> Diego
+[dir=both arrowhead=halfopen color=darkgreen]
+		Diego -> Perez
+[dir=both arrowhead=halfopen color=darkgreen]
+		Perez -> Toraya
+[dir=both arrowhead=halfopen color=darkgreen]
+		Toraya -> Heber
+[dir=both arrowhead=halfopen color=darkgreen]
+		Heber -> Mario
+[dir=both arrowhead=halfopen color=darkgreen]
+Heber->hola[arrowhead=inv color=goldenrod]
+ subgraph cluster_Heber{ 
+	style=filled; 
+	color=lightgrey; 
+	node [style=filled,color=white]; 
+hola->ke [arrowhead=odot color=green]ke->ace [arrowhead=odot color=green]ace->hola [arrowhead=odot color=green]
+label = "Cola Circular de Canciones de Heber"; 
+ } 
+
+label = "Lista Doblemente Enlazada de Usuarios"; 
+
+}

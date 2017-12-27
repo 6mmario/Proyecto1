@@ -1,0 +1,35 @@
+digraph g {
+rankdir=UD
+	node [color=blue shape=record]
+nodojose[ label = "<C0>|jose|<C1>"]; 
+nodojose:C0->nodoarbo [arrowhead=invodot color=red]
+nodoarbo[ label = "<C0>|arbo|<C1>"]; 
+nodoarbo:C0->nodoMAR [arrowhead=invodot color=red]
+nodoMAR[ label = "<C0>|MAR|<C1>"]; 
+nodoMAR:C1->nodoa[arrowhead=invodot color=red]
+nodoa[ label = "<C0>|a|<C1>"]; 
+nodojose:C1->nodopedr[arrowhead=invodot color=red]
+nodopedr[ label = "<C0>|pedr|<C1>"]; 
+subgraph cluster_pedr{ 
+style=filled; 
+ color=lightgrey; 
+ node [style=filled,color=white]; 
+Maluma->Ozuna[dir = both constraint= false] 
+Ozuna->Que[dir = both constraint= false] 
+Que->Xumo[dir = both constraint= false] 
+Xumo->me[dir = both constraint= false] 
+me->siento[dir = both constraint= false] 
+siento->Maluma[dir = both constraint= false] 
+label = "Lista de Canciones"; 
+} 
+nodopedr:C1 ->Maluma [arrowhead=crow color=blue]
+nodopedr:C0->nodomari [arrowhead=invodot color=red]
+nodomari[ label = "<C0>|mari|<C1>"]; 
+nodomari:C1->nodopedo[arrowhead=invodot color=red]
+nodopedo[ label = "<C0>|pedo|<C1>"]; 
+nodopedo:C0->nodomijo [arrowhead=invodot color=red]
+nodomijo[ label = "<C0>|mijo|<C1>"]; 
+nodopedr:C1->nodozor[arrowhead=invodot color=red]
+nodozor[ label = "<C0>|zor|<C1>"]; 
+
+}

@@ -29,10 +29,24 @@ class colaCircular:
             print str(aux.nombre)
             while True:
                 g.edge(str(aux.nombre), str(aux.next.nombre))
-                g.body.append('[dir=both]')
                 aux = aux.next
                 if (aux == self.front):
                     break
                 print str(aux.nombre)
         g.format = 'png'
         g.view()
+
+    text = ""
+    def recorrer(self):
+        self.text = ""
+        self.text += '\tstyle=filled; \n\tcolor=lightgrey; \n\tnode [style=filled,color=white]; \n'
+        aux = self.front
+        if (aux == None):
+            self.text += 'Cola de Canciones Vacia'
+            return self.text
+        else:
+            while True:
+                self.text += str(aux.nombre) + '->'+str(aux.next.nombre) +' [arrowhead=odot color=green]'
+                aux = aux.next
+                if(aux == self.front):
+                    return self.text

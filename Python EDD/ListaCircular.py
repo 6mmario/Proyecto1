@@ -1,4 +1,5 @@
 from NodoCircular import nodeCircular
+from ColaCircular import colaCircular
 from graphviz import Digraph
 
 
@@ -34,6 +35,17 @@ class listaCircular:
         print ('El Usuario No Existe')
         return None
 
+    def insertColaCanciones(self,elementoCircular, elementoCola):
+        if (elementoCircular != None):
+            if (elementoCircular.accesoCola == None):
+                cola = colaCircular()
+                elementoCircular.accesoCola = cola
+                cola.insert(elementoCola)
+
+            else:
+                aux = elementoCircular.accesoCola
+                aux.insert(elementoCola)
+
     def delete(self, element):
 
         if element == self.first:
@@ -52,22 +64,32 @@ class listaCircular:
                     aux.prev.next = aux.next
                 aux = aux.next
 
+    text = ""
     def graficar(self):
-        g = Digraph('G', filename='graficaLista.gv')
+        self.text = ""
+        g = Digraph('G', filename='graficaListaUsuarios.gv')
         g.body.append('rankdir=LR')
         g.attr('node', shape='box', color='blue')
+        g.attr('node', fontname='Marvel', fontsize='14')
         aux = self.first
         if aux == None:
             print "Lista vacia"
             g.edge(str('LISTA VACIA'))
         else:
-            print str(aux.nombre + " " + aux.pasword)
             while True:
                 g.edge(str(aux.nombre), str(aux.next.nombre))
-                g.body.append('[dir=both]')
+                g.body.append('[dir=both arrowhead=halfopen color=darkgreen]')
+                if (aux.accesoCola != None):
+                    temp = aux.accesoCola
+                    self.text += str(aux.nombre)+'->'+str(temp.front.nombre) + '[arrowhead=inv color=goldenrod]'
+                    self.text +='\n subgraph cluster_'+str(aux.nombre)+'{ \n'
+                    self.text += temp.recorrer()
+                    self.text += '\nlabel = "Cola Circular de Canciones de '+str(aux.nombre)+'"; \n } \n'
+                    g.body.append(self.text)
+                    self.text = ""
                 aux = aux.next
-                if (aux.next == self.first):
+                if (aux == self.last.next):
                     break
-                print str(aux.nombre + " " + aux.pasword)
+        g.body.append('label = "Lista Doblemente Enlazada de Usuarios"; \n')
         g.format = 'png'
         g.view()

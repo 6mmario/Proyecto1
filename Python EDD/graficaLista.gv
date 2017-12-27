@@ -1,14 +1,12 @@
 digraph G {
 rankdir=LR
 	node [color=blue shape=box]
-		marco -> jose
+		Guitz -> Jose
 [dir=both]
-		jose -> elmer
+		Jose -> Diego
 [dir=both]
-		elmer -> Diego
+		Diego -> Perez
 [dir=both]
-		Diego -> Heber
-[dir=both]
-		Heber -> Delmy
+		Perez -> Toraya
 [dir=both]
 }
