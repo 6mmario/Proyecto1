@@ -1,0 +1,10 @@
+digraph G {
+rankdir=LR
+	node [color=blue shape=box]
+[23][23] s 
+ s 
+[23][23] s 
+ s 
+
+label = "Arbol B"
+}

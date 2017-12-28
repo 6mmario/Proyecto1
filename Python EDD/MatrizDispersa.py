@@ -14,7 +14,6 @@ class Nodo:
 
 
 class MatrizDispersa:
-
     def __init__(self):
         self.principal = Nodo("i", 0, 0, 0)
         self.contador = 1
@@ -223,6 +222,22 @@ class MatrizDispersa:
                 temp = temp.abajo
             print "........................."
             aux = aux.siguiente
+
+    def buscarColumnas(self, valor, columna):
+        aux = self.principal.siguiente
+
+        while aux != None:
+            print 'dentro del primero while: ' + str(aux.genero)
+            if(aux.genero == columna):
+                print 'entre al if de la columna'
+                temp = aux.abajo
+                while (temp != None):
+                    print 'estoy en el segundo while'+ str(temp.date)
+                    if (temp.date == valor):
+                        return temp
+                    temp = temp.abajo
+            aux = aux.siguiente
+        return None
 
     def RecorrerPorFila(self):
         print "Reccorrer por filas"
