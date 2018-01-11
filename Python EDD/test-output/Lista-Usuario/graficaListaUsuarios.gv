@@ -1,0 +1,62 @@
+digraph G {
+rankdir=LR
+	node [color=blue shape=box]
+"marco123" [label="marco\n123"];
+
+	marco123 -> jose1234
+[dir=both arrowhead=halfopen color=darkgreen]
+"jose1234" [label="jose\n1234"];
+
+	jose1234 -> elmer1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"elmer1232" [label="elmer\n1232"];
+
+	elmer1232 -> vivian1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"vivian1232" [label="vivian\n1232"];
+
+	vivian1232 -> zussette1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"zussette1232" [label="zussette\n1232"];
+
+	zussette1232 -> renato1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"renato1232" [label="renato\n1232"];
+
+	renato1232 -> jose1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"jose1232" [label="jose\n1232"];
+
+	jose1232 -> rolando1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"rolando1232" [label="rolando\n1232"];
+
+	rolando1232 -> matilde1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"matilde1232" [label="matilde\n1232"];
+
+	matilde1232 -> david1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"david1232" [label="david\n1232"];
+
+	david1232 -> mike1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"mike1232" [label="mike\n1232"];
+
+	mike1232 -> max1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"max1232" [label="max\n1232"];
+
+	max1232 -> dean1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"dean1232" [label="dean\n1232"];
+
+	dean1232 -> edgar1232
+[dir=both arrowhead=halfopen color=darkgreen]
+"edgar1232" [label="edgar\n1232"];
+
+	edgar1232 -> marco123
+[dir=both arrowhead=halfopen color=darkgreen]
+label = "Lista Doblemente Enlazada de Usuarios"; 
+
+}

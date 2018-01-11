@@ -1,0 +1,57 @@
+digraph G {
+rankdir=UD
+	node [color=blue shape=box]
+{rank = min;"MATRIZ";"(15)reggae";"balada";"hip hop";"pop";"rap";}; 
+
+{rank = same;"1990";"1990-balada";};
+{rank = same;"1999";"1999-balada";};
+{rank = same;"2010";"2010-reggae";};
+{rank = same;"2011";"2011-reggae";};
+{rank = same;"2013";"2013-(15)reggae";"2013-hip hop";"2013-pop";"2013-rap";};
+{rank = same;"2018";"2018-rap";};
+
+"1990-balada"->"1999-balada"
+"1999-balada"->"1990-balada"
+"2013-rap"->"2018-rap"
+"2018-rap"->"2013-rap"
+"2010-reggae"->"2011-reggae"
+"2011-reggae"->"2010-reggae"
+
+"(15)reggae"->"2013-(15)reggae";
+"balada"->"1990-balada";
+"hip hop"->"2013-hip hop";
+"pop"->"2013-pop";
+"rap"->"2013-rap";
+"reggae"->"2010-reggae";
+
+"2013-(15)reggae"->"2013-hip hop"[constraint = false]; 
+"2013-hip hop"->"2013-(15)reggae"[constraint = false]; 
+"2013-hip hop"->"2013-pop"[constraint = false]; 
+"2013-pop"->"2013-hip hop"[constraint = false]; 
+"2013-pop"->"2013-rap"[constraint = false]; 
+"2013-rap"->"2013-pop"[constraint = false]; 
+
+"1990"->"1990-balada";
+"1999"->"1999-balada";
+"2010"->"2010-reggae";
+"2011"->"2011-reggae";
+"2013"->"2013-(15)reggae";
+"2018"->"2018-rap";
+
+"MATRIZ" -> "(15)reggae";
+"(15)reggae"->"balada";
+"balada"->"hip hop";
+"hip hop"->"pop";
+"pop"->"rap";
+"rap"->"reggae";
+
+"MATRIZ" -> "1990"[rankdir=UD];
+"1990"->"1999"[rankdir=UD];
+"1999"->"2010"[rankdir=UD];
+"2010"->"2011"[rankdir=UD];
+"2011"->"2013"[rankdir=UD];
+"2013"->"2018"[rankdir=UD];
+
+label = "Matriz Dispersa"; 
+
+}

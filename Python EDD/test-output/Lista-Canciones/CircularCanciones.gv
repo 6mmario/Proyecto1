@@ -1,0 +1,27 @@
+digraph G {
+rankdir=UD
+	node [color=blue shape=box]
+"breaking the habit \n C:\cancionesEDD\Linkin Park\DSP\Breaking_The_Habit.mp3"->"faint \n C:\cancionesEDD\Linkin Park\DSP\Faint.mp3" [dir=both arrowhead=invodot color=yellow]
+"faint \n C:\cancionesEDD\Linkin Park\DSP\Faint.mp3"->"given up \n C:\cancionesEDD\Linkin Park\DSP\Given Up.mp3" [dir=both arrowhead=invodot color=yellow]
+"given up \n C:\cancionesEDD\Linkin Park\DSP\Given Up.mp3"->"in my remains \n C:\cancionesEDD\Linkin Park\DSP\In My Remains.mp3" [dir=both arrowhead=invodot color=yellow]
+"in my remains \n C:\cancionesEDD\Linkin Park\DSP\In My Remains.mp3"->"burn it down \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Burn It Down Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-para.mp3" [dir=both arrowhead=invodot color=yellow]
+"burn it down \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Burn It Down Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-para.mp3"->"lies greed misery \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Lies Greed Misery Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube.mp3" [dir=both arrowhead=invodot color=yellow]
+"lies greed misery \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Lies Greed Misery Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube.mp3"->"loatr sotd iridescent \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - LOATRSOTDIridescent Arena Ciudad de Mexico - 14Septiembre2012-[www.youtu.mp3" [dir=both arrowhead=invodot color=yellow]
+"loatr sotd iridescent \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - LOATRSOTDIridescent Arena Ciudad de Mexico - 14Septiembre2012-[www.youtu.mp3"->"numb \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Numb Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-para-mp3.com.mp3" [dir=both arrowhead=invodot color=yellow]
+"numb \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Numb Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-para-mp3.com.mp3"->"one step closer \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - One Step Closer Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-p.mp3" [dir=both arrowhead=invodot color=yellow]
+"one step closer \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - One Step Closer Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-p.mp3"->"the catalyst \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - The Catalyst Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-para.mp3" [dir=both arrowhead=invodot color=yellow]
+"the catalyst \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - The Catalyst Arena Ciudad de Mexico - 14Septiembre2012-[www.youtube-para.mp3"->"waiting for the end \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Waiting For The End Arena Ciudad de Mexico - 14Septiembre2012-[www.youtu.mp3" [dir=both arrowhead=invodot color=yellow]
+"waiting for the end \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park - Waiting For The End Arena Ciudad de Mexico - 14Septiembre2012-[www.youtu.mp3"->"bleed it out / sabotage \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park bleed it out.mp3" [dir=both arrowhead=invodot color=yellow]
+"bleed it out / sabotage \n C:\cancionesEDD\Linkin Park\DSP\Linkin Park bleed it out.mp3"->"in the end \n C:\cancionesEDD\Linkin Park\DSP\Linkin_Park_-_In_The_End_[Arena_Ciudad_de_México_-_14_Septiembre_2012].mp3" [dir=both arrowhead=invodot color=yellow]
+"in the end \n C:\cancionesEDD\Linkin Park\DSP\Linkin_Park_-_In_The_End_[Arena_Ciudad_de_México_-_14_Septiembre_2012].mp3"->"lost in the echo \n C:\cancionesEDD\Linkin Park\DSP\Linkin_Park_-_Lost_In_The_Echo_[Arena_Ciudad_de_México_-_14_Septiembre_2012].mp3" [dir=both arrowhead=invodot color=yellow]
+"lost in the echo \n C:\cancionesEDD\Linkin Park\DSP\Linkin_Park_-_Lost_In_The_Echo_[Arena_Ciudad_de_México_-_14_Septiembre_2012].mp3"->"what i've done \n C:\cancionesEDD\Linkin Park\DSP\Linkin_Park_-_What_I've_Done_[Arena_Ciudad_de_México_-_14_Septiembre_2012].mp3" [dir=both arrowhead=invodot color=yellow]
+"what i've done \n C:\cancionesEDD\Linkin Park\DSP\Linkin_Park_-_What_I've_Done_[Arena_Ciudad_de_México_-_14_Septiembre_2012].mp3"->"new divide \n C:\cancionesEDD\Linkin Park\DSP\New Divide.mp3" [dir=both arrowhead=invodot color=yellow]
+"new divide \n C:\cancionesEDD\Linkin Park\DSP\New Divide.mp3"->"papercut \n C:\cancionesEDD\Linkin Park\DSP\Papercut.mp3" [dir=both arrowhead=invodot color=yellow]
+"papercut \n C:\cancionesEDD\Linkin Park\DSP\Papercut.mp3"->"points of authority \n C:\cancionesEDD\Linkin Park\DSP\Points Of Authority.mp3" [dir=both arrowhead=invodot color=yellow]
+"points of authority \n C:\cancionesEDD\Linkin Park\DSP\Points Of Authority.mp3"->"somewhere i belong \n C:\cancionesEDD\Linkin Park\DSP\Somewhere I Belong.mp3" [dir=both arrowhead=invodot color=yellow]
+"somewhere i belong \n C:\cancionesEDD\Linkin Park\DSP\Somewhere I Belong.mp3"->"tinfoil \n C:\cancionesEDD\Linkin Park\DSP\Tinfoil.mp3" [dir=both arrowhead=invodot color=yellow]
+"tinfoil \n C:\cancionesEDD\Linkin Park\DSP\Tinfoil.mp3"->"victimized \n C:\cancionesEDD\Linkin Park\DSP\Victimized.mp3" [dir=both arrowhead=invodot color=yellow]
+"victimized \n C:\cancionesEDD\Linkin Park\DSP\Victimized.mp3"->"with you \n C:\cancionesEDD\Linkin Park\DSP\With You.mp3" [dir=both arrowhead=invodot color=yellow]
+"with you \n C:\cancionesEDD\Linkin Park\DSP\With You.mp3"->"breaking the habit \n C:\cancionesEDD\Linkin Park\DSP\Breaking_The_Habit.mp3" [dir=both arrowhead=invodot color=yellow]
+label = "Lista de Canciones del Album: dsp del Artista: "
+}

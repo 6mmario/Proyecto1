@@ -1,0 +1,11 @@
+digraph G {
+rankdir=LR
+	node [color=blue shape=Mdiamond]
+"a"->"Si pudiera"
+subgraph cluster_0 {
+style=filled; color=lightgrey; node [style=filled,color=white];
+		"Si pudiera" -> Preciosa
+		Preciosa -> "Si pudiera"
+}
+label = "Play List del Usuario";
+}

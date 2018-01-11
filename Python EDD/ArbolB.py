@@ -1,47 +1,74 @@
-# coding=utf-8
 import bisect
-from arbolBinario import aBinary
 from graphviz import Digraph
 
 
 class _BTreeNode(object):
-
+    datos = ''
 
     def __init__(self, values=None, children=None, accesos=None):
         self.parent = None
         self.values = values or []
         self.children = children
         self.accesos = accesos
-        if self.children:
-            for i in self.children:
-                i.parent = self
+
+        # if self.children:
+        #     print '------si sale esto es porque no se que hace esto '
+        #     for i in self.children:
+        #         print '------si sale esto es porque no se que hace esto '
+        #         print self.datos
+        #         i.parent = self
 
     def __str__(self):
-        return 'Node(%r)' % (self.values)
-
-    text = ''
-    def grap(self):
-        self.text += '--> Node(%r)' % (self.values)
-        return '--> Node(%r)' % (self.values)
+        return '%r' % self.values
 
     def pretty_print(self, tab=''):
         print('%s%s' % (tab, self))
         if self.children:
             for i in self.children:
-                i.pretty_print(tab + '  ')
+                i.pretty_print(tab + '***')
 
-    def pretty_Grapth(self, tab=''):
-        print('%s%s' % (tab, self.grap()))
-        if self.children:
-            for i in self.children:
-                i.pretty_Grapth(tab + ' s ')
+    contador = 0
 
-    def intento1000(self):
-        print('%s' % (self.grap()))
-        self.text+=('%s' % (self.grap()))
+    def graficar(self, contador):
+        # print 'HOJAS'
+        #self.llenar(str("subgraph cluster_" + str(contador) + '{ \n'))
+
+        # self.datos += str("subgraph cluster_" + '{ \n')
+        for x in range(0, len(self.values)):
+         #   self.llenar(str(self.values[x]) + ' \n')
+            print str(self.values[x])
+            # self.datos += str(self.values[x]) + ' \n'
+        # self.datos += str('} \n')
+        #self.llenar(str('} \n'))
+
+        # print self.datos
         if self.children:
+
+            # print '----Nodo padre, hacia las hojas-------'
+            # print self.datos
+            # print '---fin del recorrdio del nodo padre hacia las hojas------'
             for i in self.children:
-                i.intento1000()
+
+         #       self.contador += 1
+                i.graficar(self.contador)
+                print str(i) + 'no se que es esto parte 2'
+
+    def llenar(self, texto):
+        _BTreeNode.datos += texto
+
+    def GenerarArchivo(self):
+        print _BTreeNode.datos
+
+    def graficarGrap(self, texto):
+        g = Digraph('G', filename='graficaB.gv')
+        g.body.append('rankdir=LR')
+        g.attr('node', shape='box', color='blue')
+
+        g.body.append(texto)
+
+        g.body.append('label = "Arbol B"')
+        g.format = 'png'
+        g.view()
 
     def check_valid(self, tree):
         innerNode = self.children is not None
@@ -49,22 +76,17 @@ class _BTreeNode(object):
 
         assert (self.values is not None)
 
-        # un nodo interno, excepto la raíz, tiene al menos min_values
         if not rootNode and innerNode:
             assert (tree.min_values <= len(self.values))
 
-        # un nodo no puede tener más de max_values
         assert (len(self.values) <= tree.max_values)
 
-        # La raíz tiene al menos dos hijos si no es un nodo hoja.
         if rootNode and innerNode:
             assert (len(self.children) >= 2)
 
-        # Un nodo no hoja con k hijos contiene claves k-1.
         if innerNode:
             assert ((len(self.values) + 1) == len(self.children))
 
-        # check that values are sorted
         prev = None
         for i in self.values:
             if prev is not None:
@@ -79,7 +101,6 @@ class _BTreeNode(object):
     def search(self, val):
         i = bisect.bisect_left(self.values, val)
         if (i != len(self.values) and not val < self.values[i]):
-            # se encontró un valor
             assert (self.values[i] == val)
             # return (True,self.values[i], self, i)
             return self.values[i], self, i
@@ -99,7 +120,6 @@ class _BTreeNode(object):
         if slot is None:
             slot = 0
 
-        # obtener la mediana de self.values ​​y val
         splitValues = self.values[0:slot] + midList + self.values[slot:]
         medianIdx = len(splitValues) // 2
 
@@ -135,35 +155,23 @@ class _BTreeNode(object):
             tree.size += 1
 
     def add(self, tree, val, slot=None, childNodes=None):
-        # todas las inserciones deben comenzar en un nodo hoja,
-        # a menos que llamemos de manera recursiva en el padre
-        # como resultado de la división de nodos
-        # cuando estamos agregando el valor mediano al padre
 
         assert (self.children is None or childNodes)
-
-        # si este es un nodo interno si no es una hoja o la raíz
-        # entonces self.children no es None, entonces también
-        # esta función debe haber sido llamada recursivamente
-        # con childNodes no None, val not None y
-        # len (childNodes) == 2
 
         innerNode = self.children is not None
         if innerNode:
             assert (childNodes and len(childNodes) == 2)
         else:
             assert (childNodes is None)
-            # si aún no se encuentra, encuentre la posición de inserción entre
-            # los valores del nodo actual
+
         if slot is None:
             slot = bisect.bisect_left(self.values, val)
 
-        # podemos hacer la inserción a los valores de nodo actuales?
         if len(self.values) < tree.max_values:
             self.values.insert(slot, val)
             tree.size += 1
             if childNodes:
-                # actualizar la referencia principal en los nodos que estamos a punto de agregar
+
                 for i in childNodes:
                     i.parent = self
                 self.children[slot:slot + 1] = childNodes
@@ -171,7 +179,6 @@ class _BTreeNode(object):
             # estamos hechos
             return True
 
-        # parece que el nodo actual está lleno, tenemos que dividirlo
         self._split_node(tree, val, slot, childNodes)
         return True
 
@@ -197,16 +204,13 @@ class _BTreeNode(object):
         assert (slot != len(self.values) and self.values[slot] == val)
 
         if not innerNode:
-            # realizar la eliminación de una hoja
+
             del self.values[slot]
             tree.size -= 1
             if len(self.values) < tree.min_values:
-                # underflow ocurrido en el nodo hoja
-                # árbol reequilibrio comenzando con este nodo
                 self._rebalance(tree)
         else:
-            # encontrar el valor mínimo en el subárbol derecho
-            # y úselo como el valor del separador para reemplazar val
+
             newSep, node, idx = self.min_value(slot + 1)
             self.values[slot] = newSep
             del node.values[idx]
@@ -215,13 +219,12 @@ class _BTreeNode(object):
                 node._rebalance(tree)
 
     def _rebalance(self, tree):
+        global sepIdx, ln, rn
         lsibling, rsibling, idx = self.get_siblings()
 
-        # solo la raíz no tiene hermanos
         assert (rsibling or lsibling or self.parent is None)
 
         if self.parent is None:
-            # esto es un no-op para el nodo raíz
             return
 
         innerNode = self.children is not None
@@ -236,7 +239,7 @@ class _BTreeNode(object):
             if rsibling and len(rsibling.values) > tree.min_values:
                 sepIdx = idx
                 sepVal = self.parent.values[sepIdx]
-                # borrow node de rsibling para realizar un giro a la izquierda
+
                 self.parent.values[sepIdx] = rsibling.values[0]
                 del rsibling.values[0]
                 self.values.append(sepVal)
@@ -244,13 +247,12 @@ class _BTreeNode(object):
             elif lsibling and len(lsibling.values) > tree.min_values:
                 sepIdx = idx - 1
                 sepVal = self.parent.values[sepIdx]
-                # borrow node de lsibling para realizar un giro a la derecha
+                #
                 self.parent.values[sepIdx] = lsibling.values[-1]
                 del lsibling.values[-1]
                 self.values.insert(0, sepVal)
                 return
 
-        # tenemos que fusionar 2 nodos
         if lsibling is not None:
             sepIdx = idx - 1
             ln = lsibling
@@ -276,8 +278,6 @@ class _BTreeNode(object):
                 i.parent = ln
 
         if len(ln.values) > tree.max_values:
-            # tenemos que dividir el nodo recién formado
-            # esta situación puede surgir solo cuando se fusionan los nodos internos
             assert (innerNode)
             ln._split_node(tree)
 
@@ -291,7 +291,6 @@ class _BTreeNode(object):
 
     def get_siblings(self):
         if not self.parent:
-            # la raíz no tiene hermanos
             return (None, None, 0)
 
         assert (self.parent.children)
@@ -324,24 +323,22 @@ class BTree(object):
         self.size = 0
 
     def __str__(self):
-        return 'height: %d items: %d m: %d root: %x' % (
+        return 'height: %d items: %d m: %d root: %s' % (
             self.height, self.size,
             self.max_values + 1,
-            id(self.root))
+            self.root)
 
     def add(self, val):
-        # encontrar el nodo de hoja donde se debe agregar el valor
+
         found, node, slot = self.root.search(val)
         if found:
-            # el valor ya existe, no puede agregarlo dos veces
             return False
         return node.add(self, val, slot, None)
 
     def delete(self, val):
-        # encontrar el valor y su
+
         found, node, slot = self.root.search(val)
         if not found:
-            # el valor no existe, no puede eliminarlo
             return False
         return node.delete(self, val, slot)
 
@@ -354,14 +351,30 @@ class BTree(object):
     def max(self):
         return self.root.max_value()[0]
 
-    def graficar(self):
-        g = Digraph('G', filename='BTree.gv')
-        g.body.append('rankdir=LR')
-        g.attr('node', shape='box', color='blue')
-        self.root.intento1000()
 
+if __name__ == '__main__':
+    tree = BTree(5)
 
-        g.body.append('label = "Arbol B"')
-        g.format = 'png'
-        g.render('test-output/BTree/BTree.gv', view=True)
-
+    tree.add('moto')
+    tree.add('mota')
+    tree.add('pedo')
+    tree.add('casa')
+    tree.add('dedo')
+    tree.add('pato')
+    tree.add('bano')
+    tree.add('tapa')
+    tree.add('open')
+    tree.add('logo')
+    tree.add('rosa')
+    tree.add('caja')
+    tree.add('pesa')
+    tree.add('flor')
+    tree.add('fast')
+    tree.add('jose')
+    tree.add('obed')
+    tree.add('lobo')
+    tree.add('loro')
+    tree.add('lodo')
+    tree.root.pretty_print()
+    tree.root.graficar(0)
+    tree.root.graficarGrap(_BTreeNode.datos)

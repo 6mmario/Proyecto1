@@ -13,7 +13,7 @@ class aBinary:
         else:
             aux = self.root
             father = None
-            while aux!= None:
+            while aux != None:
                 father = aux
                 if (element.id) >= (aux.id):
                     aux = aux.right
@@ -25,18 +25,14 @@ class aBinary:
                 father.left = element
 
     def search(self, date, element):
-        print "Esto recibo de element: " + str(element)
         if (element != None):
             if date == element.id:
-                print "encontre al elemento buscado: " + str(element)
                 return element
             else:
                 if (date) < (element.id):
                     return self.search(date, element.left)
                 else:
-                    return self.search(date,element.right)
-
-
+                    return self.search(date, element.right)
 
     def insertListaCircular(self, node, nodeCancion):
         if (node.acceso == None):
@@ -50,21 +46,46 @@ class aBinary:
     text = ""
 
     def Recorrer(self, node):
+        if node != None:
+            self.text += '"nodo' + str(node) + '"[ label = "<C0>|' + str(node) + '|<C1>"]; \n'
+        if node.left:
+            self.text += '"nodo' + str(node) + "\":C0->" + '"nodo' + str(
+                node.left) + '" [arrowhead=invodot color=red]' + "\n"
+            self.Recorrer(node.left)
+        if node.right:
+            self.text += '"nodo' + str(node) + "\":C1->" + '"nodo' + str(
+                node.right) + '"[arrowhead=invodot color=red]' + "\n"
+            self.Recorrer(node.right)
 
-       if  node != None:
-           self.text +='nodo'+str(node)+'[ label = "<C0>|'+str(node)+'|<C1>"]; \n'
-           if (node.acceso != None):
-               self.text += "subgraph cluster_" + str(node) + "{ \n"
-               aux = node.acceso
-               self.text += aux.recorrerLista()
-               self.text += "} \n"
-               self.text += 'nodo' + str(node) + ':C1 ->' + str(node.acceso.first.nombre)+' [arrowhead=crow color=blue]'+'\n'
-           if node.left:
-               self.text +='nodo'+str(node)+":C0->"+'nodo'+str(node.left)+' [arrowhead=invodot color=red]'+"\n"
-               self.Recorrer(node.left)
-           if node.right:
-               self.text += 'nodo'+str(node) + ":C1->" +'nodo'+str(node.right)+'[arrowhead=invodot color=red]'+"\n"
-               self.Recorrer(node.right)
+    txt = ''
+    def todosNodos(self, node):
+        if(node != None):
+            cancion = node.acceso
+            if(cancion != None):
+                self.txt+='*Album: *'+str(node)
+                self.txt += cancion.Canciones()
+            self.todosNodos(node.left)
+            self.todosNodos(node.right)
+
+    albums = ''
+    def todosAlbums(self, node):
+        if(node != None):
+            lCanciones = node.acceso
+            self.albums += '*Album*' + str(node)
+            if(lCanciones!= None):
+               self.albums += lCanciones.Canciones()
+            self.todosAlbums(node.left)
+            self.todosAlbums(node.right)
+
+    def regresarCadena(self):
+        t = self.albums
+        self.albums = ''
+        return t
+
+    def retornarCanciones(self):
+        t = self.txt
+        self.txt = ''
+        return t
 
     def preOrder(self, elemento):
         if (elemento != None):
@@ -86,10 +107,10 @@ class aBinary:
             self.inOrder(elemento.right)
 
     def getRoot(self):
-        if(self.root != None):
+        if (self.root != None):
             return self.root
 
-    def graficar(self):
+    def graficarBinario(self, nombreArtista):
         g = Digraph('g', filename='BBTree.gv')
         g.body.append('rankdir=UD')
         g.attr('node', shape='record', color='blue')
@@ -101,5 +122,10 @@ class aBinary:
             aux = self.getRoot()
             self.Recorrer(aux)
             g.body.append(self.text)
+            g.body.append('label = "Arbol Binario de Albums del Artista: ' + str(nombreArtista) + '"')
         g.format = 'png'
-        g.view()
+        g.render('test-output/ABB/BBTree.gv', view=True)
+
+
+    def recorrerListaCanciones(self,lista):
+        lista.graficarListaCanciones()

@@ -1,0 +1,7 @@
+digraph g {
+rankdir=UD
+	node [color=blue shape=record]
+"nododouble"[ label = "<C0>|double|<C1>"]; 
+
+label = "Arbol Binario de Albums del Artista: eminem"
+}

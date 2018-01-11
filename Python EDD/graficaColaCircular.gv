@@ -1,7 +1,0 @@
-digraph G {
-rankdir=LR
-	node [color=blue shape=box]
-		hola -> ke
-		ke -> ace
-		ace -> hola
-}

@@ -1,32 +1,37 @@
 class NodoM:
-    def __init__(self, fila=None, columna=None, valor=None, derecha=None, izquierda=None, arriba=None, abajo=None):
+    def __init__(self, fila=None, columna=None, valor=None):
         self.fila = fila
         self.columna = columna
         self.valor = valor
-        self.derecha = derecha
-        self.izquierda = izquierda
-        self.arriba = arriba
-        self.abajo = abajo
+        self.derecha = None
+        self.izquierda = None
+        self.arriba = None
+        self.abajo = None
+        self.accesoB = None
+        self.accesB = None
+
+    def __str__(self):
+        return "*%s*%s" %(self.fila, self.columna)
 
 
 class NodoE:
-    def __init__(self, id=None, siguiente=None, anterior=None, acceso=None):
+    def __init__(self, id=None):
         self.id = id
-        self.siguiente = siguiente
-        self.anterior = anterior
-        self.acceso = acceso
+        self.siguiente = None
+        self.anterior = None
+        self.acceso = None
 
         def __str__(self):
-            return "%s" % (self.id)
+            return self.id
 
 class listaEncabezados:
-    primero = NodoE()
+    primero = None
 
     def insertar(self, nuevo):
         if (self.primero == None):
             self.primero = nuevo
         else:
-            if (str(nuevo.id) < self.primero.id):  # Inserto al Inicio
+            if (nuevo.id < self.primero.id):  # Inserto al Inicio
                 nuevo.siguiente = self.primero
                 self.primero.anterior = nuevo
                 self.primero = nuevo
@@ -42,6 +47,26 @@ class listaEncabezados:
                 if (actual.siguiente == None):  # insertar al final
                     actual.siguiente = nuevo
                     nuevo.anterior = actual
+
+    def eliminarEncabezado(self,nodo):
+        if(self.primero.siguiente == None):
+            self.primero = None
+        else:
+            if(self.primero == nodo):
+                self.primero = self.primero.siguiente
+            else:
+                temp= self.primero
+                while temp.siguiente !=None:
+                    if(temp == nodo):
+                        temp.anterior.siguiente = temp.siguiente
+                        temp.siguiente.anterior = temp.anterior
+                        break
+                    temp = temp.siguiente
+
+                if(temp.siguiente == None):
+                    if(temp == nodo):
+                        temp.anterior.siguiente = None
+
 
     def getEncabezado(self, val):
         actual = self.primero

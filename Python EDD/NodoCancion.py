@@ -6,4 +6,4 @@ class nodeCancion:
         self.prev = prev
 
     def __str__(self):
-        return "%s %s" %(self.nombre, self.path)
+        return "*%s*%s" %(self.nombre, self.path)

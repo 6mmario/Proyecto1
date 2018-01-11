@@ -1,5 +1,7 @@
 from graphviz import Digraph
-
+from BTree import BTree
+from tempBTree import tBTree
+from tempBTreeNode import NodeTree
 
 class Nodo:
     def __init__(self, ao, genero, date, nodo):
@@ -11,6 +13,8 @@ class Nodo:
         self.atras = None
         self.arriba = None
         self.abajo = None
+        self.accesoB = None
+        self.accesB = None
 
 
 class MatrizDispersa:
@@ -223,21 +227,55 @@ class MatrizDispersa:
             print "........................."
             aux = aux.siguiente
 
-    def buscarColumnas(self, valor, columna):
+    def buscarColumnas(self, valor):
         aux = self.principal.siguiente
-
-        while aux != None:
-            print 'dentro del primero while: ' + str(aux.genero)
-            if(aux.genero == columna):
-                print 'entre al if de la columna'
+        if aux != None:
+            while aux != None:
                 temp = aux.abajo
                 while (temp != None):
-                    print 'estoy en el segundo while'+ str(temp.date)
                     if (temp.date == valor):
                         return temp
                     temp = temp.abajo
-            aux = aux.siguiente
+                aux = aux.siguiente
         return None
+
+    def buscarAlbum(self, nombreAlbum):
+        aux = self.principal.siguiente
+        if  aux!= None:
+            while aux != None:
+                temp = aux.abajo
+                while (temp!=None):#tengo el nodo de la matrz
+                    print 'nodo de la Matriz es: '+temp.valor
+                    artista = temp.accesB #asigno la lista de artistas
+                    if artista != None:#si tiene un Btree asociado al nodo de la matriz
+                        nArtistta, album = artista.recorrerArtistas(nombreAlbum) #busco en toda la lista de al
+                        if(album !=None): #encontro el album
+                            lista = album.acceso
+                            lista.graficarListaCanciones(str(nArtistta),nombreAlbum)
+                            return 'True'
+                    temp = temp.abajo
+                aux = aux.siguiente
+        return None
+
+    def insertB(self, elementMatriz,elementB):
+        if(elementMatriz != None):
+            if(elementMatriz.accesoB == None):
+                bbtre = BTree(5)
+                elementMatriz.accesoB = bbtre
+                bbtre.add(elementB)
+                #metodo opcional
+                tempT = tBTree()
+                elementMatriz.accesB = tempT
+                nodeBT = NodeTree(elementB)
+                tempT.insert(nodeBT)
+            else:
+                elementMatriz.accesoB.add(elementB)
+                #metodo opcional
+                nodeBT = NodeTree(elementB)
+                elementMatriz.accesB.insert(nodeBT)
+
+    def recorrerB(self,arbol):
+        arbol.root.pretty_print()
 
     def RecorrerPorFila(self):
         print "Reccorrer por filas"
